@@ -7,7 +7,7 @@ class ExampleApp : Application() {
 
     override fun onCreate() {
         super.onCreate()
-        component = DaggerAppComponent.create()
+        component = DaggerAppComponent.factory().create(DriverModule("Nathan"))
 
     }
 

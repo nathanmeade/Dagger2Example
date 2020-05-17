@@ -5,11 +5,12 @@ import dagger.Provides
 import javax.inject.Singleton
 
 @Module
-class DriverModule {
+class DriverModule
+    constructor(private val driveName: String){
 
     @Provides
     @Singleton
     fun provideDriver() : Driver {
-        return Driver()
+        return Driver(driveName)
     }
 }
