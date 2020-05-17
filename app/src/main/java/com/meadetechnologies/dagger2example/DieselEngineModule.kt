@@ -11,7 +11,12 @@ class DieselEngineModule
     constructor(private val horsepower: Int) {
 
     @Provides
-    fun provideEngine() : Engine {
-        return DieselEngine(horsepower)
+    fun provideHorsepower() : Int{
+        return horsepower
+    }
+
+    @Provides
+    fun provideEngine(engine: DieselEngine) : Engine {
+        return engine
     }
 }
