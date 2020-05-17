@@ -3,13 +3,11 @@ package com.meadetechnologies.dagger2example
 import com.meadetechnologies.dagger2example.models.Car
 import dagger.BindsInstance
 import dagger.Component
-import dagger.Module
 import javax.inject.Named
-import javax.inject.Singleton
 
-@Singleton
-@Component (modules = arrayOf(WheelsModule::class, PetrolEngineModule::class))
-interface CarComponent {
+@PerActivity
+@Component (dependencies = arrayOf(AppComponent::class), modules = arrayOf(WheelsModule::class, PetrolEngineModule::class))
+interface ActivityComponent {
     fun getCar() : Car
     fun inject(mainActivity: MainActivity)
 
@@ -21,6 +19,8 @@ interface CarComponent {
         @BindsInstance
         fun engineCapacity(@Named("engine capacity") engineCapacity: Int) : Builder
 
-        fun build() : CarComponent
+        fun appComponent(component: AppComponent) : Builder
+
+        fun build() : ActivityComponent
     }
 }
