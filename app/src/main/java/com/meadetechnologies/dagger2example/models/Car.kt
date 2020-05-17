@@ -1,12 +1,13 @@
 package com.meadetechnologies.dagger2example.models
 
 import android.util.Log
+import com.meadetechnologies.dagger2example.Driver
 import javax.inject.Inject
 
 
 class Car
     @Inject
-    constructor(private val engine: Engine, private val wheels: Wheels)  {
+    constructor(private val driver: Driver, private val engine: Engine, private val wheels: Wheels)  {
         val TAG = "Car"
 
         @Inject
@@ -16,6 +17,6 @@ class Car
 
         fun drive() {
             engine.start()
-            Log.d(TAG, "driving...")
+            Log.d(TAG, "$driver drives $this")
         }
     }
