@@ -15,6 +15,7 @@ class Car
         }
 
         fun drive() {
+            engine.start()
             Log.d(TAG, "driving...")
         }
     }
