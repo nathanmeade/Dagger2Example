@@ -4,10 +4,14 @@ import com.meadetechnologies.dagger2example.models.DieselEngine
 import com.meadetechnologies.dagger2example.models.Engine
 import dagger.Binds
 import dagger.Module
+import dagger.Provides
 
 @Module
-abstract class DieselEngineModule {
+class DieselEngineModule
+    constructor(private val horsepower: Int) {
 
-    @Binds
-    abstract fun provideEngine(engine: DieselEngine) : Engine
+    @Provides
+    fun provideEngine() : Engine {
+        return DieselEngine(horsepower)
+    }
 }
